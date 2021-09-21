@@ -31,9 +31,9 @@ docker-compose -f docker-compose-dev.yml up
 
 ### Volumes:
 
-**./my_fork_of_intelmq/:/etc/intelmq** -> this is the folder where your source code need to be, we decide to use fork from intelmq so you could inherit intelmq changes and upgrades to your bots code directly.
+        **./my_fork_of_intelmq/:/etc/intelmq** -> this is the folder where your source code need to be, we decide to use fork from intelmq so you could inherit intelmq changes and upgrades to your bots code directly.
 
-**./dev_tools/:/opt/dev_tools** -> folder for special commands required to apply your changes in runtime
+        **./dev_tools/:/opt/dev_tools** -> folder for special commands required to apply your changes in runtime
 
 ### Add your own bots
 
