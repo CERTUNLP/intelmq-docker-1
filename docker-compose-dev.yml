@@ -25,10 +25,10 @@ services:
         image: certat/intelmq-full:latest
         volumes: 
             - ./example_config/intelmq/etc/:/opt/intelmq/etc/
-            - ./example_config/intelmq-api/config.json:/etc/intelmq/api-config.json
             - ./intelmq_logs:/opt/intelmq/var/log
             - ./intelmq_output:/opt/intelmq/var/lib/bots
-            - ./my_fork_of_intelmq/intelmq/bots:/etc/intelmq/intelmq/bots
+            - ./my_fork_of_intelmq/:/etc/intelmq/
+            - ./example_config/intelmq-api/config.json:/etc/intelmq/api-config.json
             - ./dev_tools/:/opt/dev_tools
         depends_on: 
             - redis
