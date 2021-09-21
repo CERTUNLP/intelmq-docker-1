@@ -4,21 +4,21 @@
 
 ### Install docker and docker-compose
 ```
-sudo apt update && sudo apt upgrade -y && sudo apt install docker.io git docker-compose`
+sudo apt update && sudo apt upgrade -y && sudo apt install docker.io git docker-compose
 ```
 
 ### Clone this repo
 
 ```
-cd ~
 git clone https://github.com/certat/intelmq-docker.git --recursive
 cd intelmq-docker
-docker-compose pull
+docker-compose -f docker-compose-dev.yml pull
 ```
 
 ### In next step replace git@github.com:certtools/intelmq.git by your fork of intelmq
 
 ```
+cd intelmq-docker
 git clone git@github.com:certtools/intelmq.git my_fork_of_intelmq/
 docker-compose -f docker-compose-dev.yml up
 ```
