@@ -28,11 +28,12 @@ services:
             - ./example_config/intelmq-api:/opt/intelmq-api/config
             - ./intelmq_logs:/opt/intelmq/var/log
             - ./intelmq_output:/opt/intelmq/var/lib/bots
-            - ./example_config/intelmq/var/lib/bot:/opt/intelmq/var/lib/bot
-            - ./mybots:/opt/dev/mybots
+            - ./my_fork_of_intelmq/:/etc/intelmq
+            - ./dev_tools/:/opt/dev_tools
         depends_on: 
             - redis
-        environment: 
+        environment:
+            IS_DEV: "true" 
             INTELMQ_PIPELINE_DRIVER: "redis"
             INTELMQ_PIPELINE_HOST: redis
             INTELMQ_REDIS_CACHE_HOST: redis
@@ -42,8 +43,6 @@ services:
             AUTO_MIX_BOTS: "false"
         networks:
             - intelmq-internal
-
-
 networks: 
     intelmq-internal:
         driver: bridge

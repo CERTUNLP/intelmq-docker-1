@@ -1,5 +1,11 @@
 #!/bin/bash
 export INTELMQ_IS_DOCKER=1
+
+if [[ ${IS_DEV} == "true" ]]
+then
+    bash /opt/dev_tools/install_reqs_and_deploy_bots
+fi
+
 sudo chown -R intelmq:intelmq /etc/intelmq
 sudo chown -R intelmq:intelmq /opt/intelmq
 
