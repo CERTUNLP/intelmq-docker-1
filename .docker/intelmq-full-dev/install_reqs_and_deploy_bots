@@ -1,0 +1,8 @@
+#!/bin/bash
+for file in $(find /etc/intelmq/intelmq/bots -name "*REQUIREMENTS.txt"); do 
+    sudo pip3 install -r $file; 
+done
+cd /etc/intelmq
+sudo pip3 install --no-cache-dir -e .
+
+intelmqsetup

@@ -1,6 +1,14 @@
 #!/bin/bash
 export INTELMQ_IS_DOCKER=1
 
+if [[ ${IS_DEV} == "true" ]]
+then
+    cd /etc/intelmq
+    sudo pip3 install hug url-normalize geolib imbox jinja2 pyasn textx tld time-machine
+    sudo pip3 install --force pymisp[fileobjects,openioc,virustotal]
+    /opt/install_reqs_and_deploy_bots.sh
+fi
+
 sudo chown -R intelmq:intelmq /etc/intelmq
 sudo chown -R intelmq:intelmq /opt/intelmq
 

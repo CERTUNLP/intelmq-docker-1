@@ -12,13 +12,12 @@ sudo apt update && sudo apt upgrade -y && sudo apt install docker.io git docker-
 ```
 git clone https://github.com/certat/intelmq-docker.git --recursive
 cd intelmq-docker
-docker-compose -f docker-compose-dev.yml pull
+docker-compose -f docker-compose-dev.yml build
 ```
 
 ### In next step replace git@github.com:certtools/intelmq.git by your fork of intelmq
 
 ```
-cd intelmq-docker
 git clone git@github.com:certtools/intelmq.git my_fork_of_intelmq/
 docker-compose -f docker-compose-dev.yml up
 ```
@@ -31,19 +30,18 @@ docker-compose -f docker-compose-dev.yml up
 
 ### Volumes:
 
-- **./my_fork_of_intelmq/:/etc/intelmq** -> this is the folder where your source code need to be, we decide to use fork from intelmq so you could inherit intelmq changes and upgrades to your bots code directly.
-- **./dev_tools/:/opt/dev_tools** -> folder for special commands required to apply your changes in runtime
+- **./my_fork_of_intelmq/intelmq:/etc/intelmq/intelmq** -> this is the folder where your source code need to be, we decide to use fork from intelmq so you could inherit intelmq changes and upgrades to your bots code directly.
 
 ### Add your own bots
 
-Just start coding or pull your bots repository in ./my_fork_of_intelmq folder
+Just start coding or pull your bots repository in ./my_fork_of_intelmq folder/intelmq/bots
 
-### How to install and look yours bots runnig
+### How to install and look yours bots running
 
-Just run command **install_reqs_and_deploy_bots** in the running container
+After you change some bot or add someshing new just run command **install_reqs_and_deploy_bots.sh** in the running container
 
 ```
-docker-compose exec -f docker-compose-dev.yml  intelmq sudo bash /opt/dev_tools/install_reqs_and_deploy_bots
+docker-compose exec -f docker-compose-dev.yml  intelmq sudo bash /opt/install_reqs_and_deploy_bots.sh
 ```
 
 When you do this:

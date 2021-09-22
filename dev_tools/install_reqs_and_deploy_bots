@@ -1,3 +1,0 @@
-#!/bin/bash
-for file in $(find /etc/intelmq/intelmq/bots -name "*REQUIREMENTS.txt"); do pip3 install -r $file; done
-intelmqsetup

@@ -1,3 +1,22 @@
+API6-Collector:
+  bot_id: API6-Collector
+  description: Collect data by exposing a HTTP API interface
+  enabled: true
+  group: Collector
+  module: intelmq.bots.collectors.api6.collector_api
+  name: API6
+  parameters:
+    bottype: Collector
+    code: ''
+    destination_queues: {}
+    documentation: ''
+    jere: GATOJERE
+    name: API5
+    port: 5000
+    provider: APICollector
+    socket_path: /tmp/imq_api_default_socket
+    use_socket: false
+  run_mode: continuous
 cymru-whois-expert:
   bot_id: cymru-whois-expert
   description: Cymru Whois (IP to ASN) is the bot responsible to add network information
@@ -38,10 +57,12 @@ deduplicator-expert:
     redis_cache_ttl: 86400
   run_mode: continuous
 feodo-tracker-browse-collector:
+  bot_id: feodo-tracker-browse-collector
   description: Generic URL Fetcher is the bot responsible to get the report from an
     URL.
   enabled: true
   group: Collector
+  groupname: collectors
   module: intelmq.bots.collectors.http.collector_http
   name: URL Fetcher
   parameters:
@@ -58,10 +79,12 @@ feodo-tracker-browse-collector:
     ssl_client_certificate: null
   run_mode: continuous
 feodo-tracker-browse-parser:
+  bot_id: feodo-tracker-browse-parser
   description: HTML Table Parser is a bot configurable to parse different html table
     data.
   enabled: true
   group: Parser
+  groupname: parsers
   module: intelmq.bots.parsers.html_table.parser
   name: HTML Table
   parameters:
@@ -88,8 +111,11 @@ file-output:
   groupname: outputs
   module: intelmq.bots.outputs.file.output
   name: File
-  parameters: {file: /opt/intelmq/var/lib/bots/file-output/events.txt, hierarchical_output: false,
-    single_key: null}
+  parameters:
+    destination_queues: {}
+    file: /opt/intelmq/var/lib/bots/file-output/events.txt
+    hierarchical_output: false
+    single_key: null
   run_mode: continuous
 gethostbyname-1-expert:
   bot_id: gethostbyname-1-expert
