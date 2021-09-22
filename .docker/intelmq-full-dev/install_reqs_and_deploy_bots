@@ -1,7 +1,9 @@
 #!/bin/bash
 for file in $(find /etc/intelmq/intelmq/bots -name "*REQUIREMENTS.txt"); do 
-    sudo pip3 install -r $file; 
+    cat file >> /tmp/fullrequirements.txt
 done
+cat /tmp/fullrequirements.txt | sort | uniq > /tmp/orderfullrequirements.txt
+sudo pip3 install -r /tmp/orderfullrequirements.txt; 
 cd /etc/intelmq
 sudo pip3 install --no-cache-dir -e .
 
